@@ -1,0 +1,175 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "cppbpapprovalusersconfig",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.34.0",
+      "toolsId": "94137d8b-3005-4692-8f79-a1c6bb78404a"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/cpp/ui_bpapprovalremin_o4/srvd/cpp/ui_bpapprovalremin_o4/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "cppbpapprvusersconfig-maintain": {
+          "semanticObject": "cppbpapprvusersconfig",
+          "action": "maintain",
+          "title": "{{cppbpapprvusersconfig-maintain.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "cppbpapprovalusersconfig.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": "BpApprovalReminAll({key}):?query:",
+          "name": "BpApprovalReminAllObjectPage",
+          "target": "BpApprovalReminAllObjectPage"
+        },
+        {
+          "pattern": "BpApprovalReminAll({key})/_BpApprovalRemin({key2}):?query:",
+          "name": "BpApprovalReminObjectPage",
+          "target": "BpApprovalReminObjectPage"
+        }
+      ],
+      "targets": {
+        "BpApprovalReminAllObjectPage": {
+          "type": "Component",
+          "id": "BpApprovalReminAllObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/BpApprovalReminAll",
+              "navigation": {
+                "_BpApprovalRemin": {
+                  "detail": {
+                    "route": "BpApprovalReminObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "_BpApprovalRemin/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "enableExport": true,
+                    "enableFullScreen": true,
+                    "selectAll": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "BpApprovalReminObjectPage": {
+          "type": "Component",
+          "id": "BpApprovalReminObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/BpApprovalReminAll/_BpApprovalRemin"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "cppbpapprovalusersconfig"
+  }
+}
